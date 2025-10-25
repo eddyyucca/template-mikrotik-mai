@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="expires" content="-1">
+    <title>Internet hotspot - Login</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #1a4d2e 0%, #8b0000 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            max-width: 400px;
+            width: 100%;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #c41e3a 0%, #1a4d2e 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 24px;
+            margin-bottom: 5px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .header p {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        .lang-switch {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .lang-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid transparent;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 13px;
+            transition: all 0.3s;
+        }
+
+        .lang-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .lang-btn.active {
+            background: white;
+            color: #c41e3a;
+            border-color: white;
+        }
+
+        .form-container {
+            padding: 40px 30px;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+
+        .input-group input:focus {
+            outline: none;
+            border-color: #c41e3a;
+            box-shadow: 0 0 0 3px rgba(196, 30, 58, 0.1);
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #c41e3a 0%, #8b0000 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(196, 30, 58, 0.3);
+        }
+
+        .login-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(196, 30, 58, 0.4);
+        }
+
+        .login-btn:active {
+            transform: translateY(0);
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background: #f5f5f5;
+            color: #666;
+            font-size: 12px;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .error-message {
+            background: #ffebee;
+            color: #c41e3a;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-size: 14px;
+            text-align: center;
+            border: 1px solid #ffcdd2;
+        }
+
+        .info-contact {
+            margin-top: 25px;
+            padding: 15px;
+            background: #f0f7f0;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 13px;
+            color: #555;
+            border: 1px solid #c8e6c9;
+        }
+
+        .info-contact strong {
+            color: #1a4d2e;
+        }
+    </style>
+</head>
+
+<body>
+    $(if chap-id)
+    <form name="sendin" action="$(link-login-only)" method="post" style="display:none">
+        <input type="hidden" name="username" />
+        <input type="hidden" name="password" />
+        <input type="hidden" name="dst" value="$(link-orig)" />
+        <input type="hidden" name="popup" value="true" />
+    </form>
+
+    <script src="/md5.js"></script>
+    <script>
+        function doLogin() {
+            document.sendin.username.value = document.login.username.value;
+            document.sendin.password.value = hexMD5('$(chap-id)' + document.login.password.value + '$(chap-challenge)');
+            document.sendin.submit();
+            return false;
+        }
+    </script>
+    $(endif)
+
+    <div class="container">
+        <div class="header">
+            <h1>PT Mining Abadi Indonesia</h1>
+            <p>Zhonghai Site - 中海矿区</p>
+            <div class="lang-switch">
+                <button class="lang-btn active" type="button" onclick="switchLang('id')">Indonesia</button>
+                <button class="lang-btn" type="button" onclick="switchLang('cn')">中文</button>
+            </div>
+        </div>
+
+        <form name="login" action="$(link-login-only)" method="post" $(if chap-id) onSubmit="return doLogin()" $(endif)>
+            <input type="hidden" name="dst" value="$(link-orig)" />
+            <input type="hidden" name="popup" value="true" />
+
+            <div class="form-container">
+                $(if error)
+                <div class="error-message">$(error)</div>
+                $(endif)
+
+                <div class="input-group">
+                    <label id="label-username">Username</label>
+                    <input type="text" name="username" placeholder="Username" required>
+                </div>
+                <div class="input-group">
+                    <label id="label-password">Password</label>
+                    <input type="password" name="password" placeholder="Password" required>
+                </div>
+                <button type="submit" class="login-btn" id="btn-submit">Masuk</button>
+
+                <div class="info-contact" id="info-contact">
+                    <p>Untuk mendapatkan username login atau masalah lainnya,<br>hubungi <strong>Departemen
+                            GA-IT</strong></p>
+                </div>
+            </div>
+        </form>
+
+        <div class="footer">
+            <p id="footer-id">© 2025 PT Mining Abadi Indonesia. Semua hak dilindungi.</p>
+            <p id="footer-cn" class="hidden">© 2025 印尼永昌矿业公司。保留所有权利。</p>
+        </div>
+    </div>
+
+    <script>
+        function switchLang(lang) {
+            const buttons = document.querySelectorAll('.lang-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            const labelUsername = document.getElementById('label-username');
+            const labelPassword = document.getElementById('label-password');
+            const btnSubmit = document.getElementById('btn-submit');
+            const footerId = document.getElementById('footer-id');
+            const footerCn = document.getElementById('footer-cn');
+            const infoContact = document.getElementById('info-contact');
+
+            if (lang === 'id') {
+                labelUsername.textContent = 'Username';
+                labelPassword.textContent = 'Password';
+                btnSubmit.textContent = 'Masuk';
+                infoContact.innerHTML =
+                    '<p>Untuk mendapatkan username login atau masalah lainnya,<br>hubungi <strong>Departemen GA-IT</strong></p>';
+                footerId.classList.remove('hidden');
+                footerCn.classList.add('hidden');
+            } else {
+                labelUsername.textContent = '用户名';
+                labelPassword.textContent = '密码';
+                btnSubmit.textContent = '登录';
+                infoContact.innerHTML = '<p>要获取登录用户名或其他问题，<br>请联系 <strong>GA-IT 部门</strong></p>';
+                footerId.classList.add('hidden');
+                footerCn.classList.remove('hidden');
+            }
+        }
+    </script>
+</body>
+
+</html>

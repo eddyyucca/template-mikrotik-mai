@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="expires" content="-1">
+    <title>Internet hotspot - Error</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #1a4d2e 0%, #8b0000 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .ie-fixMinHeight {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .main {
+            width: 100%;
+            max-width: 450px;
+        }
+
+        .wrap {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            text-align: center;
+        }
+
+        h1 {
+            background: linear-gradient(135deg, #c41e3a 0%, #8b0000 100%);
+            color: white;
+            padding: 30px;
+            font-size: 24px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            margin: 0;
+        }
+
+        .wrap>div {
+            padding: 50px 30px;
+        }
+
+        .error-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            background: #c41e3a;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            color: white;
+            animation: shake 0.5s;
+        }
+
+        .error-icon::before {
+            content: '✗';
+        }
+
+        @keyframes shake {
+
+            0%,
+            100% {
+                transform: translateX(0);
+            }
+
+            25% {
+                transform: translateX(-10px);
+            }
+
+            75% {
+                transform: translateX(10px);
+            }
+        }
+
+        .info {
+            font-size: 14px;
+            color: #666;
+            margin-top: 20px;
+        }
+
+        .info a {
+            color: #1a4d2e;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 8px 20px;
+            display: inline-block;
+            background: rgba(26, 77, 46, 0.1);
+            border-radius: 8px;
+            margin-top: 10px;
+            transition: all 0.3s;
+        }
+
+        .info a:hover {
+            background: rgba(26, 77, 46, 0.2);
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="ie-fixMinHeight">
+        <div class="main">
+            <div class="wrap">
+                <h1>Hotspot error: $(error)</h1>
+                <div>
+                    <div class="error-icon"></div>
+                    <p class="info">Log in page: <a href="$(link-login)">$(link-login)</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

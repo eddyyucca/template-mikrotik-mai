@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    $(if refresh-timeout)
+    <meta http-equiv="refresh" content="$(refresh-timeout-secs)">
+    $(endif)
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="expires" content="-1">
+    <title>Status - PT Mining Abadi Indonesia</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #1a4d2e 0%, #8b0000 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: 50px auto;
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1a4d2e 0%, #2d7a4a 100%);
+            color: white;
+            padding: 25px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 22px;
+            margin-bottom: 8px;
+        }
+
+        .header p {
+            font-size: 13px;
+            opacity: 0.9;
+        }
+
+        .content {
+            padding: 25px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        table tr {
+            border-bottom: 1px solid #eee;
+        }
+
+        table tr:last-child {
+            border-bottom: none;
+        }
+
+        table td {
+            padding: 12px 8px;
+            font-size: 14px;
+        }
+
+        table td:first-child {
+            font-weight: bold;
+            color: #666;
+            width: 35%;
+        }
+
+        table td:last-child {
+            color: #1a4d2e;
+            font-weight: 600;
+            text-align: right;
+        }
+
+        .btn-logout {
+            width: 100%;
+            padding: 12px;
+            margin-top: 20px;
+            background: linear-gradient(135deg, #c41e3a 0%, #8b0000 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .btn-logout:hover {
+            opacity: 0.9;
+        }
+
+        .footer {
+            padding: 15px;
+            text-align: center;
+            background: #f5f5f5;
+            font-size: 11px;
+            color: #999;
+        }
+    </style>
+    <script>
+        $(
+            if advert - pending == 'yes')
+        var popup = '';
+
+        function focusAdvert() {
+            if (window.focus) popup.focus();
+        }
+
+        function openAdvert() {
+            popup = open('$(link-advert)', 'hotspot_advert', '');
+            setTimeout("focusAdvert()", 1000);
+        }
+        $(endif)
+
+        function openLogout() {
+            if (window.name != 'hotspot_status') return true;
+            open('$(link-logout)', 'hotspot_logout',
+                'toolbar=0,location=0,directories=0,status=0,menubars=0,resizable=1,width=280,height=250');
+            window.close();
+            return false;
+        }
+    </script>
+</head>
+
+<body $(if advert-pending=='yes' ) onLoad="openAdvert()" $(endif)>
+
+    <div class="container">
+        <div class="header">
+            $(if login-by == 'trial')
+            <h1>Hi, Trial User!</h1>
+            $(elif login-by != 'mac')
+            <h1>Hi, $(username)!</h1>
+            $(endif)
+            <p>PT Mining Abadi Indonesia - Zhonghai Site</p>
+        </div>
+
+        <div class="content">
+            <table>
+                <tr>
+                    <td>IP Address</td>
+                    <td>$(ip)</td>
+                </tr>
+                <tr>
+                    <td>MAC Address</td>
+                    <td>$(mac)</td>
+                </tr>
+                <tr>
+                    <td>Upload / Download</td>
+                    <td>$(bytes-in-nice) / $(bytes-out-nice)</td>
+                </tr>
+                $(if remain-bytes-total)
+                <tr>
+                    <td>Data Tersisa</td>
+                    <td>$(remain-bytes-total-nice)</td>
+                </tr>
+                $(endif)
+                $(if session-time-left)
+                <tr>
+                    <td>Waktu Terhubung</td>
+                    <td>$(uptime) / $(session-time-left)</td>
+                </tr>
+                $(else)
+                <tr>
+                    <td>Waktu Terhubung</td>
+                    <td>$(uptime)</td>
+                </tr>
+                $(endif)
+                $(if blocked == 'yes')
+                <tr>
+                    <td>Status</td>
+                    <td><a href="$(link-advert)" target="hotspot_advert">Iklan diperlukan</a></td>
+                </tr>
+                $(elif refresh-timeout)
+                <tr>
+                    <td>Auto Refresh</td>
+                    <td>$(refresh-timeout)</td>
+                </tr>
+                $(endif)
+            </table>
+
+            $(if login-by-mac != 'yes')
+            <form action="$(link-logout)" name="logout" onSubmit="return openLogout()">
+                <button class="btn-logout" type="submit">Logout</button>
+            </form>
+            $(endif)
+        </div>
+
+        <div class="footer">
+            © 2025 PT Mining Abadi Indonesia
+        </div>
+    </div>
+
+</body>
+
+</html>

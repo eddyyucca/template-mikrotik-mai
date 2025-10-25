@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="refresh" content="2; url=$(link-redirect)">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="expires" content="-1">
+    <title>Login Berhasil - PT Mining Abadi Indonesia</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #1a4d2e 0%, #8b0000 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            max-width: 450px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1a4d2e 0%, #2d7a4a 100%);
+            color: white;
+            padding: 30px;
+        }
+
+        .header h1 {
+            font-size: 24px;
+            margin-bottom: 5px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .header p {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        .content {
+            padding: 50px 30px;
+        }
+
+        .success-icon {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 25px;
+            background: #1a4d2e;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 50px;
+            color: white;
+            animation: scaleIn 0.5s ease-out;
+        }
+
+        @keyframes scaleIn {
+            0% {
+                transform: scale(0);
+                opacity: 0;
+            }
+
+            50% {
+                transform: scale(1.1);
+            }
+
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .message {
+            font-size: 22px;
+            color: #1a4d2e;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .sub-message {
+            font-size: 15px;
+            color: #666;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .loading {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 25px;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            background: #1a4d2e;
+            border-radius: 50%;
+            animation: bounce 1.4s infinite ease-in-out both;
+        }
+
+        .dot:nth-child(1) {
+            animation-delay: -0.32s;
+        }
+
+        .dot:nth-child(2) {
+            animation-delay: -0.16s;
+        }
+
+        @keyframes bounce {
+
+            0%,
+            80%,
+            100% {
+                transform: scale(0);
+            }
+
+            40% {
+                transform: scale(1);
+            }
+        }
+
+        .redirect-link {
+            display: inline-block;
+            padding: 12px 30px;
+            background: linear-gradient(135deg, #c41e3a 0%, #8b0000 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: bold;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(196, 30, 58, 0.3);
+        }
+
+        .redirect-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(196, 30, 58, 0.4);
+        }
+
+        .footer {
+            padding: 20px;
+            background: #f5f5f5;
+            color: #666;
+            font-size: 12px;
+        }
+
+        .info-text {
+            font-size: 13px;
+            color: #888;
+            margin-bottom: 20px;
+        }
+    </style>
+    <script>
+        function startClock() {
+            $(if popup == 'true')
+            open('$(link-status)', 'hotspot_status',
+                'toolbar=0,location=0,directories=0,status=0,menubars=0,resizable=1,width=500,height=600');
+            $(endif)
+            setTimeout(function () {
+                location.href = unescape('$(link-redirect-esc)');
+            }, 2000);
+        }
+    </script>
+</head>
+
+<body onLoad="startClock()">
+    <div class="container">
+        <div class="header">
+            <h1>Login Berhasil</h1>
+            <p>PT Mining Abadi Indonesia - Zhonghai Site</p>
+        </div>
+
+        <div class="content">
+            <div class="success-icon">✓</div>
+            <div class="message">Selamat Datang!</div>
+            <div class="sub-message">
+                Anda telah berhasil terhubung ke jaringan internet<br>
+                您已成功连接到互联网
+            </div>
+
+            <div class="loading">
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+            </div>
+
+            <div class="info-text">
+                Mengarahkan ke halaman tujuan...<br>
+                正在重定向到目标页面...
+            </div>
+
+            <a href="$(link-redirect)" class="redirect-link">Klik disini jika tidak otomatis / 如果未自动跳转，请点击此处</a>
+        </div>
+
+        <div class="footer">
+            © 2025 PT Mining Abadi Indonesia. Semua hak dilindungi.<br>
+            © 2025 印尼永昌矿业公司。保留所有权利。
+        </div>
+    </div>
+</body>
+
+</html>
